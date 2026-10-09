@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#F5C518" />
+  <title>Pioneer — Open Archives of Science for Everyone</title>
+  <meta name="description" content="Pioneer brings leading educational content to every learner — students, researchers and independent writers. Explore archives, discover great scientists, and ask our AI tutor." />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Pioneer home">
+        <span class="brand-mark" aria-hidden="true">P</span>
+        <span class="brand-name">Pioneer</span>
+      </a>
+      <nav class="tabs" role="tablist" aria-label="Sections">
+        <button class="tab" role="tab" id="tab-explore" aria-controls="panel-explore" aria-selected="true" data-tab="explore">Explore</button>
+        <button class="tab" role="tab" id="tab-discover" aria-controls="panel-discover" aria-selected="false" tabindex="-1" data-tab="discover">Discover</button>
+        <button class="tab" role="tab" id="tab-ask" aria-controls="panel-ask" aria-selected="false" tabindex="-1" data-tab="ask">Ask AI</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">Open knowledge, for every learner</p>
+      <h1 id="hero-title">The archives of science, open to everyone.</h1>
+      <p class="hero-lede">Pioneer brings leading educational content to communities that have been left out — whether you are a student, a researcher, or an independent essay writer.</p>
+    </section>
+
+    <!-- EXPLORE -->
+    <section class="panel" id="panel-explore" role="tabpanel" aria-labelledby="tab-explore">
+      <div class="panel-head">
+        <div>
+          <h2>Explore the archives</h2>
+          <p class="panel-sub">Landmark papers, books and lecture notes. Open any document as a PDF.</p>
+        </div>
+        <label class="search">
+          <span class="sr-only">Search archives</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input id="archive-search" type="search" placeholder="Search by title, author or field" autocomplete="off" />
+        </label>
+      </div>
+      <div class="chips" id="archive-filters" role="group" aria-label="Filter archives by field"></div>
+      <ul class="archive-grid" id="archive-grid" aria-live="polite"></ul>
+      <p class="empty" id="archive-empty" hidden>No documents match your search.</p>
+    </section>
+
+    <!-- DISCOVER -->
+    <section class="panel" id="panel-discover" role="tabpanel" aria-labelledby="tab-discover" hidden>
+      <div class="panel-head">
+        <div>
+          <h2>Discover the pioneers</h2>
+          <p class="panel-sub">The minds who shaped modern science. Select anyone to read about their life and work.</p>
+        </div>
+        <label class="search">
+          <span class="sr-only">Search scientists</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input id="scientist-search" type="search" placeholder="Search by name or field" autocomplete="off" />
+        </label>
+      </div>
+      <ul class="scientist-grid" id="scientist-grid"></ul>
+      <p class="empty" id="scientist-empty" hidden>No scientists match your search.</p>
+    </section>
+
+    <!-- ASK AI -->
+    <section class="panel" id="panel-ask" role="tabpanel" aria-labelledby="tab-ask" hidden>
+      <div class="panel-head">
+        <div>
+          <h2>Ask Pioneer</h2>
+          <p class="panel-sub">Your AI study companion. Ask about concepts, papers, scientists, or get help structuring an essay.</p>
+        </div>
+        <button class="btn btn-ghost" id="chat-clear" type="button">New chat</button>
+      </div>
+
+      <div class="chat">
+        <ol class="chat-log" id="chat-log" aria-live="polite" aria-label="Conversation">
+          <li class="msg msg-ai">
+            <div class="msg-body">Hello! I&apos;m Pioneer, your study companion. Ask me anything about science, mathematics or research — I&apos;ll explain it step by step.</div>
+          </li>
+        </ol>
+        <div class="suggestions" id="chat-suggestions">
+          <button type="button" class="chip">Explain special relativity simply</button>
+          <button type="button" class="chip">What did Marie Curie discover?</button>
+          <button type="button" class="chip">How do I structure a research essay?</button>
+          <button type="button" class="chip">What is quantum entanglement?</button>
+        </div>
+        <form class="chat-form" id="chat-form">
+          <label for="chat-input" class="sr-only">Your question</label>
+          <textarea id="chat-input" rows="1" placeholder="Ask a question…" maxlength="4000" required></textarea>
+          <button class="btn btn-primary" id="chat-send" type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><strong>Pioneer</strong> — free, open educational content for everyone.</p>
+      <p class="footer-note">Scientist biographies and photos courtesy of Wikipedia &amp; Wikimedia Commons.</p>
+    </div>
+  </footer>
+
+  <button class="fab" id="fab-ask" type="button" aria-label="Ask Pioneer AI">
+    <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="M4 5h16v11H8l-4 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    <span>Ask AI</span>
+  </button>
+
+  <dialog class="modal" id="scientist-modal" aria-labelledby="modal-name">
+    <div class="modal-inner">
+      <button class="modal-close" type="button" id="modal-close" aria-label="Close">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-grid">
+        <div class="modal-photo" id="modal-photo"></div>
+        <div class="modal-content">
+          <p class="eyebrow" id="modal-field"></p>
+          <h2 id="modal-name"></h2>
+          <p class="modal-years" id="modal-years"></p>
+          <p class="modal-bio" id="modal-bio"></p>
+          <h3>Notable works &amp; contributions</h3>
+          <ul class="works" id="modal-works"></ul>
+          <div class="modal-actions">
+            <button class="btn btn-primary" type="button" id="modal-ask">Ask AI about them</button>
+            <a class="btn btn-ghost" id="modal-wiki" target="_blank" rel="noopener noreferrer">Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="/js/data.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
